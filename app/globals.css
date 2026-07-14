@@ -41,30 +41,29 @@
 
 :root {
   color-scheme: dark;
-  /* Dark forest green base with lime accent */
-  --background: oklch(0.19 0.03 152);
-  --foreground: oklch(0.96 0.02 130);
-  --card: oklch(0.24 0.035 152);
-  --card-foreground: oklch(0.96 0.02 130);
-  --popover: oklch(0.24 0.035 152);
-  --popover-foreground: oklch(0.96 0.02 130);
-  --primary: oklch(0.88 0.19 133);
-  --primary-foreground: oklch(0.24 0.06 148);
-  --secondary: oklch(0.29 0.04 152);
-  --secondary-foreground: oklch(0.96 0.02 130);
-  --muted: oklch(0.27 0.035 152);
-  --muted-foreground: oklch(0.72 0.03 145);
-  --accent: oklch(0.88 0.19 133);
-  --accent-foreground: oklch(0.24 0.06 148);
+  --background: oklch(0.155 0.024 155);
+  --foreground: oklch(0.97 0.015 125);
+  --card: oklch(0.205 0.03 154);
+  --card-foreground: oklch(0.97 0.015 125);
+  --popover: oklch(0.205 0.03 154);
+  --popover-foreground: oklch(0.97 0.015 125);
+  --primary: oklch(0.89 0.205 132);
+  --primary-foreground: oklch(0.16 0.04 150);
+  --secondary: oklch(0.255 0.036 153);
+  --secondary-foreground: oklch(0.97 0.015 125);
+  --muted: oklch(0.245 0.03 153);
+  --muted-foreground: oklch(0.73 0.025 142);
+  --accent: oklch(0.89 0.205 132);
+  --accent-foreground: oklch(0.16 0.04 150);
   --destructive: oklch(0.65 0.21 25);
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.88 0.19 133);
-  --chart-1: oklch(0.88 0.19 133);
-  --chart-2: oklch(0.72 0.14 150);
+  --border: oklch(0.97 0.015 125 / 12%);
+  --input: oklch(0.97 0.015 125 / 16%);
+  --ring: oklch(0.89 0.205 132);
+  --chart-1: oklch(0.89 0.205 132);
+  --chart-2: oklch(0.7 0.11 156);
   --chart-3: oklch(0.65 0.21 25);
-  --chart-4: oklch(0.85 0.1 90);
-  --chart-5: oklch(0.6 0.05 150);
+  --chart-4: oklch(0.84 0.09 92);
+  --chart-5: oklch(0.56 0.045 151);
   --radius: 1rem;
 }
 
@@ -74,5 +73,22 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .market-grid {
+    background-image:
+      linear-gradient(to right, color-mix(in oklab, var(--border), transparent 45%) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, var(--border), transparent 45%) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: linear-gradient(to bottom, black, transparent 88%);
+  }
+
+  .chart-grid {
+    background-image:
+      linear-gradient(to right, color-mix(in oklab, var(--border), transparent 35%) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, var(--border), transparent 35%) 1px, transparent 1px);
+    background-size: 25% 25%;
   }
 }
