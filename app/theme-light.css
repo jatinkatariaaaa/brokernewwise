@@ -1,0 +1,94 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  color-scheme: light;
+  /* Wise-style light theme: white base, dark forest green text, lime accent */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.28 0.06 148);
+  --card: oklch(0.97 0.005 140);
+  --card-foreground: oklch(0.28 0.06 148);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.28 0.06 148);
+  --primary: oklch(0.88 0.19 133);
+  --primary-foreground: oklch(0.28 0.06 148);
+  --secondary: oklch(0.95 0.01 140);
+  --secondary-foreground: oklch(0.28 0.06 148);
+  --muted: oklch(0.96 0.008 140);
+  --muted-foreground: oklch(0.5 0.03 148);
+  --accent: oklch(0.88 0.19 133);
+  --accent-foreground: oklch(0.28 0.06 148);
+  --destructive: oklch(0.58 0.22 25);
+  --border: oklch(0.28 0.06 148 / 12%);
+  --input: oklch(0.28 0.06 148 / 15%);
+  --ring: oklch(0.62 0.13 140);
+  --chart-1: oklch(0.88 0.19 133);
+  --chart-2: oklch(0.45 0.09 148);
+  --chart-3: oklch(0.58 0.22 25);
+  --chart-4: oklch(0.75 0.12 90);
+  --chart-5: oklch(0.6 0.05 150);
+  --radius: 1rem;
+}
+
+.dark-section {
+  /* Wise-style dark forest green section for contrast blocks */
+  --background: oklch(0.28 0.06 148);
+  --foreground: oklch(0.97 0.01 130);
+  --card: oklch(0.33 0.06 148);
+  --card-foreground: oklch(0.97 0.01 130);
+  --muted: oklch(0.33 0.055 148);
+  --muted-foreground: oklch(0.78 0.03 140);
+  --secondary: oklch(0.35 0.06 148);
+  --secondary-foreground: oklch(0.97 0.01 130);
+  --border: oklch(1 0 0 / 14%);
+  --input: oklch(1 0 0 / 16%);
+  background-color: oklch(0.28 0.06 148);
+  color: oklch(0.97 0.01 130);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
