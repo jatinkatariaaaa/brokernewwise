@@ -1,0 +1,182 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  color-scheme: dark;
+  --background: oklch(0.155 0.024 155);
+  --foreground: oklch(0.97 0.015 125);
+  --card: oklch(0.205 0.03 154);
+  --card-foreground: oklch(0.97 0.015 125);
+  --popover: oklch(0.205 0.03 154);
+  --popover-foreground: oklch(0.97 0.015 125);
+  --primary: oklch(0.89 0.205 132);
+  --primary-foreground: oklch(0.16 0.04 150);
+  --secondary: oklch(0.255 0.036 153);
+  --secondary-foreground: oklch(0.97 0.015 125);
+  --muted: oklch(0.245 0.03 153);
+  --muted-foreground: oklch(0.73 0.025 142);
+  --accent: oklch(0.89 0.205 132);
+  --accent-foreground: oklch(0.16 0.04 150);
+  --destructive: oklch(0.65 0.21 25);
+  --border: oklch(0.97 0.015 125 / 12%);
+  --input: oklch(0.97 0.015 125 / 16%);
+  --ring: oklch(0.89 0.205 132);
+  --chart-1: oklch(0.89 0.205 132);
+  --chart-2: oklch(0.7 0.11 156);
+  --chart-3: oklch(0.65 0.21 25);
+  --chart-4: oklch(0.84 0.09 92);
+  --chart-5: oklch(0.56 0.045 151);
+  --radius: 1rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .market-grid {
+    background-image:
+      linear-gradient(to right, color-mix(in oklab, var(--border), transparent 45%) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, var(--border), transparent 45%) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: linear-gradient(to bottom, black, transparent 88%);
+  }
+
+  .chart-grid {
+    background-image:
+      linear-gradient(to right, color-mix(in oklab, var(--border), transparent 35%) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, var(--border), transparent 35%) 1px, transparent 1px);
+    background-size: 25% 25%;
+  }
+
+  .ticker-track {
+    animation: ticker-scroll 34s linear infinite;
+  }
+
+  .hero-orbit {
+    pointer-events: none;
+    animation: orbit-drift 12s ease-in-out infinite alternate;
+  }
+
+  .hero-orbit-one {
+    right: -12rem;
+    top: 7rem;
+    width: 38rem;
+    height: 38rem;
+  }
+
+  .hero-orbit-two {
+    right: 9rem;
+    top: 17rem;
+    width: 20rem;
+    height: 20rem;
+    animation-delay: -5s;
+  }
+
+  .hero-panel-shadow {
+    box-shadow: 0 0 90px color-mix(in oklab, var(--primary), transparent 90%);
+    transform: rotate(-1.5deg);
+  }
+
+  .live-chart-line {
+    stroke-dasharray: 1100;
+    stroke-dashoffset: 1100;
+    animation: chart-draw 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+
+  .live-price-dot {
+    animation: live-price 1.6s ease-in-out infinite;
+  }
+
+  .hero-float-card {
+    animation: card-float 4s ease-in-out infinite;
+  }
+}
+
+@keyframes ticker-scroll {
+  to {
+    transform: translateX(calc(-50% - 1.125rem));
+  }
+}
+
+@keyframes chart-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes live-price {
+  50% {
+    transform: scale(1.35);
+    opacity: 0.65;
+  }
+}
+
+@keyframes orbit-drift {
+  to {
+    transform: translate3d(-2rem, 1rem, 0) scale(1.04);
+  }
+}
+
+@keyframes card-float {
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track,
+  .hero-orbit,
+  .live-chart-line,
+  .live-price-dot,
+  .hero-float-card {
+    animation: none;
+  }
+
+  .live-chart-line {
+    stroke-dashoffset: 0;
+  }
+}
